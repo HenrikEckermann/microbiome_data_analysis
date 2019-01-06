@@ -49,21 +49,20 @@ scale_30[[1]]
 We have several opportunities to split the data by grouping factors. See the comments:
 
 ```{r}
-# grouping by color:
+# grouping with color:
 biplot(pseq_clr, color = "nationality")
-# grouping by color and facetting 
-biplot(pseq_clr, color = "nationality", facet = "timepoint.within.group")
-# we might want to see bigger plots and avoid facetting. See the title of
-# the plot to identify the group, here timepoint.within.group:
-biplot(pseq_clr, color = "nationality", split_by = "timepoint.within.group")
+# grouping with color and facet
+biplot(pseq_clr, color = "nationality", facet = "timepoint.within.group")[[1]]
+# we might want to see bigger plots and avoid facet. 
+biplot(pseq_clr, color = "nationality", split_by = "timepoint.within.group")[[1]]
 
 # we can identify the samples using the text option:
-biplot(pseq_clr, color = "nationality", split_by = "bmi_group", text = TRUE)
+biplot(pseq_clr, color = "nationality", split_by = "bmi_group", text = TRUE)[[1]]
 ```
 
 ## Inspect composition over time 
 
-Finally, we can predefine a subset of sample IDs. This can be helpful to inspect the development of few individuals over time. Inspecting all individuals over time in one plot can be impossible in large datasets due to overflow of information on the plot. If we want to inspect the development of two individuals over time we can do it as follows: We first define all sample IDs belonging to those subjects and then pass the sample IDs to the argument "filter_samples" in the _biplot_ function. To inspect development over time we need to provide the column name of the timepoint variable to the argument "connect_series". Note that to achieve reasonable output, it must be assured that also "subject_id" is defined correctly. The function assumes that the corresponding column name is "subject_id". You might need to manually change it to the column name used in your phylosec sample data that identifies subjects (or samples sites in general).
+Finally, we can predefine a subset of sample IDs and only look at those and we can look at change in $\beta-$diversity over time. Inspecting all individuals over time in one plot can be impossible in large datasets due to overflow of information on the plot. If we want to inspect the development of two individuals over time we can do it as follows: We first define all sample IDs belonging to those subjects and then pass the sample IDs to the argument "filter_samples" in the _biplot_ function. To inspect development over time we need to provide the column name of the timepoint variable to the argument "connect_series". Note that to achieve reasonable output, it must be assured that also "subject_id" is defined correctly. The function assumes that the corresponding column name is "subject_id". You might need to manually change it to the column name used in your phylosec sample data that identifies subjects (or samples sites in general).
 
 
 ```{r}

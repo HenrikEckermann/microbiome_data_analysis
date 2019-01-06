@@ -38,7 +38,7 @@ scale_30[[1]]
 We have several opportunities to split the data by grouping factors. See the comments:
 
 ``` r
-# grouping by color:
+# grouping with color:
 biplot(pseq_clr, color = "nationality")
 ```
 
@@ -52,82 +52,30 @@ biplot(pseq_clr, color = "nationality")
 ![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-2.png)
 
 ``` r
-# grouping by color and facetting 
-biplot(pseq_clr, color = "nationality", facet = "timepoint.within.group")
+# grouping with color and facet
+biplot(pseq_clr, color = "nationality", facet = "timepoint.within.group")[[1]]
 ```
-
-    ## [[1]]
 
 ![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-3.png)
 
-    ## 
-    ## [[2]]
+``` r
+# we might want to see bigger plots and avoid facet. 
+biplot(pseq_clr, color = "nationality", split_by = "timepoint.within.group")[[1]]
+```
 
 ![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-4.png)
 
 ``` r
-# we might want to see bigger plots and avoid facetting. See the title of
-# the plot to identify the group, here timepoint.within.group:
-biplot(pseq_clr, color = "nationality", split_by = "timepoint.within.group")
+# we can identify the samples using the text option:
+biplot(pseq_clr, color = "nationality", split_by = "bmi_group", text = TRUE)[[1]]
 ```
-
-    ## [[1]]
 
 ![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-5.png)
-
-    ## 
-    ## [[2]]
-
-![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-6.png)
-
-    ## 
-    ## [[3]]
-
-![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-7.png)
-
-    ## 
-    ## [[4]]
-
-![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-8.png)
-
-``` r
-# we can identify the samples using the text option:
-biplot(pseq_clr, color = "nationality", split_by = "bmi_group", text = TRUE)
-```
-
-    ## [[1]]
-
-![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-9.png)
-
-    ## 
-    ## [[2]]
-
-![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-10.png)
-
-    ## 
-    ## [[3]]
-
-![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-11.png)
-
-    ## 
-    ## [[4]]
-
-![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-12.png)
-
-    ## 
-    ## [[5]]
-
-![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-13.png)
-
-    ## 
-    ## [[6]]
-
-![](biplot_example_files/figure-markdown_github/unnamed-chunk-4-14.png)
 
 Inspect composition over time
 -----------------------------
 
-Finally, we can predefine a subset of sample IDs. This can be helpful to inspect the development of few individuals over time. Inspecting all individuals over time in one plot can be impossible in large datasets due to overflow of information on the plot. If we want to inspect the development of two individuals over time we can do it as follows: We first define all sample IDs belonging to those subjects and then pass the sample IDs to the argument "filter\_samples" in the *biplot* function. To inspect development over time we need to provide the column name of the timepoint variable to the argument "connect\_series". Note that to achieve reasonable output, it must be assured that also "subject\_id" is defined correctly. The function assumes that the corresponding column name is "subject\_id". You might need to manually change it to the column name used in your phylosec sample data that identifies subjects (or samples sites in general).
+Finally, we can predefine a subset of sample IDs and only look at those and we can look at change in *β*−diversity over time. Inspecting all individuals over time in one plot can be impossible in large datasets due to overflow of information on the plot. If we want to inspect the development of two individuals over time we can do it as follows: We first define all sample IDs belonging to those subjects and then pass the sample IDs to the argument "filter\_samples" in the *biplot* function. To inspect development over time we need to provide the column name of the timepoint variable to the argument "connect\_series". Note that to achieve reasonable output, it must be assured that also "subject\_id" is defined correctly. The function assumes that the corresponding column name is "subject\_id". You might need to manually change it to the column name used in your phylosec sample data that identifies subjects (or samples sites in general).
 
 ``` r
 # First I need to subset the data. Here I do it outside of the phyloseq object 
