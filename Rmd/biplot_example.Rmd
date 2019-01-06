@@ -1,14 +1,10 @@
 ---
 title: "Biplot function "
 output:
-   html_document:
-    df_print: paged
-    theme: default
-    toc: yes
-    toc_depth: 5
-    toc_float: yes
+  md_document:
+    variant: markdown_github
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
-bibliography: article/my_library.bib
+bibliography: ../bib/my_library.bib
 ---
 
 
@@ -107,6 +103,7 @@ list_of_plots[[1]] + theme_void()
 # or to all plots at once:
 map(list_of_plots, ~.x + theme_classic())
 ```
+
 
 
 
