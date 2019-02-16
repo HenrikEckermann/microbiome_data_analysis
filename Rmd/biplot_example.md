@@ -85,14 +85,14 @@ meta <- sd_to_df(pseq_clr)
 meta %>% head() %>% kable()
 ```
 
-| sample\_id | subject | sex    | nationality | group | sample   |  timepoint|  timepoint.within.group| bmi\_group |
-|:-----------|:--------|:-------|:------------|:------|:---------|----------:|-----------------------:|:-----------|
-| Sample-1   | byn     | Male   | AAM         | DI    | Sample-1 |          4|                       1| obese      |
-| Sample-2   | nms     | Male   | AFR         | HE    | Sample-2 |          2|                       1| lean       |
-| Sample-3   | olt     | Male   | AFR         | HE    | Sample-3 |          2|                       1| overweight |
-| Sample-4   | pku     | Female | AFR         | HE    | Sample-4 |          2|                       1| obese      |
-| Sample-5   | qjy     | Female | AFR         | HE    | Sample-5 |          2|                       1| overweight |
-| Sample-6   | riv     | Female | AFR         | HE    | Sample-6 |          2|                       1| obese      |
+| subject | sex    | nationality | group | sample   |  timepoint|  timepoint.within.group| bmi\_group | sample\_id |
+|:--------|:-------|:------------|:------|:---------|----------:|-----------------------:|:-----------|:-----------|
+| byn     | Male   | AAM         | DI    | Sample-1 |          4|                       1| obese      | Sample-1   |
+| nms     | Male   | AFR         | HE    | Sample-2 |          2|                       1| lean       | Sample-2   |
+| olt     | Male   | AFR         | HE    | Sample-3 |          2|                       1| overweight | Sample-3   |
+| pku     | Female | AFR         | HE    | Sample-4 |          2|                       1| obese      | Sample-4   |
+| qjy     | Female | AFR         | HE    | Sample-5 |          2|                       1| overweight | Sample-5   |
+| riv     | Female | AFR         | HE    | Sample-6 |          2|                       1| obese      | Sample-6   |
 
 ``` r
 # select any number of individuals that we want to look at:
@@ -100,20 +100,20 @@ two_individuals <- meta %>% filter(subject %in% c("byn", "nms"))
 two_individuals %>% kable()
 ```
 
-| sample\_id | subject | sex  | nationality | group | sample     |  timepoint|  timepoint.within.group| bmi\_group |
-|:-----------|:--------|:-----|:------------|:------|:-----------|----------:|-----------------------:|:-----------|
-| Sample-1   | byn     | Male | AAM         | DI    | Sample-1   |          4|                       1| obese      |
-| Sample-2   | nms     | Male | AFR         | HE    | Sample-2   |          2|                       1| lean       |
-| Sample-10  | nms     | Male | AFR         | HE    | Sample-10  |          3|                       2| lean       |
-| Sample-18  | nms     | Male | AFR         | DI    | Sample-18  |          4|                       1| lean       |
-| Sample-26  | nms     | Male | AFR         | DI    | Sample-26  |          5|                       2| lean       |
-| Sample-40  | byn     | Male | AAM         | ED    | Sample-40  |          1|                       1| obese      |
-| Sample-49  | byn     | Male | AAM         | ED    | Sample-49  |          6|                       2| obese      |
-| Sample-127 | byn     | Male | AAM         | HE    | Sample-127 |          3|                       2| obese      |
-| Sample-148 | byn     | Male | AAM         | DI    | Sample-148 |          5|                       2| obese      |
-| Sample-154 | byn     | Male | AAM         | HE    | Sample-154 |          2|                       1| obese      |
-| Sample-207 | nms     | Male | AFR         | ED    | Sample-207 |          1|                       1| lean       |
-| Sample-215 | nms     | Male | AFR         | ED    | Sample-215 |          6|                       2| lean       |
+| subject | sex  | nationality | group | sample     |  timepoint|  timepoint.within.group| bmi\_group | sample\_id |
+|:--------|:-----|:------------|:------|:-----------|----------:|-----------------------:|:-----------|:-----------|
+| byn     | Male | AAM         | DI    | Sample-1   |          4|                       1| obese      | Sample-1   |
+| nms     | Male | AFR         | HE    | Sample-2   |          2|                       1| lean       | Sample-2   |
+| nms     | Male | AFR         | HE    | Sample-10  |          3|                       2| lean       | Sample-10  |
+| nms     | Male | AFR         | DI    | Sample-18  |          4|                       1| lean       | Sample-18  |
+| nms     | Male | AFR         | DI    | Sample-26  |          5|                       2| lean       | Sample-26  |
+| byn     | Male | AAM         | ED    | Sample-40  |          1|                       1| obese      | Sample-40  |
+| byn     | Male | AAM         | ED    | Sample-49  |          6|                       2| obese      | Sample-49  |
+| byn     | Male | AAM         | HE    | Sample-127 |          3|                       2| obese      | Sample-127 |
+| byn     | Male | AAM         | DI    | Sample-148 |          5|                       2| obese      | Sample-148 |
+| byn     | Male | AAM         | HE    | Sample-154 |          2|                       1| obese      | Sample-154 |
+| nms     | Male | AFR         | ED    | Sample-207 |          1|                       1| lean       | Sample-207 |
+| nms     | Male | AFR         | ED    | Sample-215 |          6|                       2| lean       | Sample-215 |
 
 ``` r
 # now we can use biplot:
@@ -145,14 +145,14 @@ meta <- atlas1006 %>% sd_to_df()
 head(meta) %>% kable()
 ```
 
-| sample\_id |  age| gender | nationality | DNA\_extraction\_method | project |  diversity| bmi\_group  | subject |  time| sample   |
-|:-----------|----:|:-------|:------------|:------------------------|:--------|----------:|:------------|:--------|-----:|:---------|
-| Sample-1   |   28| male   | US          | NA                      | 1       |       5.76| severeobese | 1       |     0| Sample-1 |
-| Sample-2   |   24| female | US          | NA                      | 1       |       6.06| obese       | 2       |     0| Sample-2 |
-| Sample-3   |   52| male   | US          | NA                      | 1       |       5.50| lean        | 3       |     0| Sample-3 |
-| Sample-4   |   22| female | US          | NA                      | 1       |       5.87| underweight | 4       |     0| Sample-4 |
-| Sample-5   |   25| female | US          | NA                      | 1       |       5.89| lean        | 5       |     0| Sample-5 |
-| Sample-6   |   42| male   | US          | NA                      | 1       |       5.53| lean        | 6       |     0| Sample-6 |
+|  age| gender | nationality | DNA\_extraction\_method | project |  diversity| bmi\_group  | subject |  time| sample   | sample\_id |
+|----:|:-------|:------------|:------------------------|:--------|----------:|:------------|:--------|-----:|:---------|:-----------|
+|   28| male   | US          | NA                      | 1       |       5.76| severeobese | 1       |     0| Sample-1 | Sample-1   |
+|   24| female | US          | NA                      | 1       |       6.06| obese       | 2       |     0| Sample-2 | Sample-2   |
+|   52| male   | US          | NA                      | 1       |       5.50| lean        | 3       |     0| Sample-3 | Sample-3   |
+|   22| female | US          | NA                      | 1       |       5.87| underweight | 4       |     0| Sample-4 | Sample-4   |
+|   25| female | US          | NA                      | 1       |       5.89| lean        | 5       |     0| Sample-5 | Sample-5   |
+|   42| male   | US          | NA                      | 1       |       5.53| lean        | 6       |     0| Sample-6 | Sample-6   |
 
 ``` r
 # since the output is a list of ggplot objects, 
@@ -185,13 +185,28 @@ The function
 biplot <- function(
   pseq_clr, 
   scaling_factor = 10, 
-  color = NULL, 
+  color = NULL,
+  shape = NULL,
   text = FALSE, 
+  label = "sample_id",
+  alpha = 1,
   split_by = FALSE, 
   facet = FALSE, 
   connect_series = FALSE, 
   subject_id = "subject_id", 
-  filter_samples = FALSE) {
+  filter_samples = FALSE,
+  otu_color = "#404040",
+  text_size = 3,
+  point_size = 3,
+  otu_text_size = 3, 
+  otu_alpha = 1, 
+  textcolor = "black",
+  loading = FALSE,
+  path_size = 1, 
+  path_alpha = 0.5,
+  arrow_size = 0.35,
+  colors = c("#fc8d62", "#8da0cb", "#66c2a5",'#1f78b4','#33a02c','#e31a1c'),
+  gradient = FALSE) {
     
     
     # PCA
@@ -207,6 +222,11 @@ biplot <- function(
             mutate_all(function(x) x * scaling_factor) %>%
             add_column(taxa = rownames(pcx$rotation))
                        
+    if (loading != FALSE) {
+        loading <- loading * scaling_factor
+        pcx_rot <- pcx_rot %>% filter(abs(PC1) > loading | abs(PC2) > loading | abs(PC3) > loading | abs(PC4) > loading)
+        }
+                       
     # combine first 4 PCs with metadata
     princomps <- pcx$x %>% as.data.frame() %>%
         rownames_to_column("sample_id") %>%
@@ -219,7 +239,9 @@ biplot <- function(
     if (filter_samples != FALSE) data <- data %>% filter(sample_id %in% filter_samples)
                        
     # avoid errors due to wrong class
-    if (length(color) > 0) data[[color]] <-  as.factor(data[[color]])
+    if (length(color) > 0 & !gradient) {
+      data[[color]] <-  as.factor(data[[color]])
+    }
     
     # if connecting by time, data must be arranged accordingly and also time/subject must be factor
     if (connect_series != FALSE) { 
@@ -228,9 +250,6 @@ biplot <- function(
         data <- data %>% arrange_(subject_id, connect_series)
     } 
  
-    
-
-                       
 
     # how much variance do pcs explain?
     pc1 <- round(pcx$sdev[1]^2/sum(pcx$sdev^2),3)
@@ -242,12 +261,11 @@ biplot <- function(
     # define plottting function 
     create_plot <- function(data, pc = 1, pc1, pc2, title = "") {
         data %>%        
-        ggplot(aes_string(glue("PC{pc}"), glue("PC{pc+1}"), label = "sample_id", color = color)) +
-            geom_text(data = pcx_rot, aes_string(glue("PC{pc}"), glue("PC{pc+1}"), label = "taxa"), color = "#999999", size = 3, alpha = 0.4) +
+        ggplot(aes_string(glue("PC{pc}"), glue("PC{pc+1}"), label = label, color = color)) +
+            geom_text(data = pcx_rot, aes_string(glue("PC{pc}"), glue("PC{pc+1}"), label = "taxa"), color = otu_color, size = otu_text_size, alpha = otu_alpha) +
             xlab(glue("PC{pc}: [{pc1*100}%]")) +  ylab(glue("PC{pc+1}: [{pc2*100}%]")) +
             scale_y_continuous(sec.axis = ~./scaling_factor) +
             scale_x_continuous(sec.axis = ~./scaling_factor) +
-            scale_color_manual(values = c("#fc8d62", "#8da0cb", "#66c2a5",'#1f78b4','#33a02c','#e31a1c')) +
             ggtitle(title) +
             theme_bw()  
     }
@@ -267,22 +285,29 @@ biplot <- function(
     }
                        
 
+    # path 
+    if (connect_series != FALSE) {
+      pc_plots <- map(pc_plots, ~.x + geom_path(aes_string(group = subject_id), arrow = arrow(length = unit(arrow_size,"cm"), ends = "last"), alpha = path_alpha, size = path_size))
+                                      
+                      
+    }
+                       
                        
     # apply optionals 
     # text 
     if (text) {
-        pc_plots <- map(pc_plots, ~.x + geom_text(size = 3))
+        pc_plots <- map(pc_plots, ~.x + geom_text(size = text_size, color = textcolor))
     }else{
-        pc_plots <- map(pc_plots, ~.x + geom_point())
+        pc_plots <- map(pc_plots, ~.x + geom_point(aes_string(shape = shape), alpha = alpha, size = point_size))
     }
 
-                    
-    # path 
-    if (connect_series != FALSE) {
-      pc_plots <- map(pc_plots, ~.x + geom_path(aes_string(group = subject_id), arrow = arrow(length = unit(0.35,"cm"), ends = "last"), alpha = 0.3, size = 0.8))
-                                      
-                      
-    } 
+    # apply color for factors
+    if (length(color) > 0 & !gradient) {
+      pc_plots <- map(pc_plots, ~.x + scale_color_manual(values = c(colors)))
+    }
+    
+           
+
                        
     # facetting 
     if (facet != FALSE) pc_plots <- map(pc_plots, ~.x + facet_wrap(as.formula(glue(".~{facet}"))))  
